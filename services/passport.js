@@ -20,7 +20,8 @@ passport.use(
   new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback' //callback goes to app.get in auth routes
+    callbackURL: '/auth/google/callback', //callback goes to app.get in auth routes
+    proxy: true
   }, (accessToken, refreshToken, profile, done) => {
     User.findOne({googleID: profile.googleID})
       .then((existingUser) => {
