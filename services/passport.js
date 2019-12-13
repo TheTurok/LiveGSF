@@ -22,21 +22,20 @@ passport.use(
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback', //callback goes to app.get in auth routes
     proxy: true
-  }, (accessToken, refreshToken, profile, done) => {
-    User.findOne({googleID: profile.googleID})
-      .then((existingUser) => {
-        if(existingUser){
-          //already User in database
-          done(null, existingUser);  // otta say this to complete google oauth
-        }
-        else{ //not existing, create a new user
-          new User({  //create a user
-            googleID: profile.id,
-            name: profile.displayName,
-            emails: profile.emails
-          }).save()
-          .then(user => done(null, user));
-        }
-      });
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    const existingUser = await User.findOne({googleID: profile.googleID});
+    if(existingUser){
+      //already User in database
+      return done(null, existingUser);  // otta say this to complete google oauth
+    }
+    //not existing, create a new user
+    const user = await new User({  //create a user
+      googleID: profile.id,
+      name: profile.displayName,
+      emails: profile.emails
+    }).save()
+    
+    done(null, user);
   })
 );
