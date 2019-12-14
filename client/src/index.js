@@ -1,3 +1,7 @@
+import 'materialize-css/dist/css/materialize.min.css';
+import './index.css';
+// Above is styling code
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Provider} from 'react-redux';  //to create state in a website

@@ -4,7 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom';  //navigation
 
 import Header from './Header';
 
-const Landing = () => <h2> Lnading </h2>;
+const Landing = () => <h2> Information Wafer Etc. </h2>;
 
 const App = () => {
   return(
@@ -16,7 +16,7 @@ const App = () => {
         </div>
       </BrowserRouter>
     </div>
-  ) ;
+  );
 };
 
 export default App;
