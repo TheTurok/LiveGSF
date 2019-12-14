@@ -7,10 +7,12 @@ import ReactDom from 'react-dom';
 import {Provider} from 'react-redux';  //to create state in a website
 import {createStore, applyMiddleware} from 'redux';
 
+import reduxThunk from 'redux-thunk';
+
 import App from './components/App';
 import reducers from './reducers';
 
-const store = createStore(reducers, {} , applyMiddleware() );
+const store = createStore(reducers, {} , applyMiddleware(reduxThunk));
 
 // FILE responsible for DATA
 
