@@ -24,7 +24,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app); //passing in app into auth routes!
 
 
-if (process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production'){ // code that reroutes all client(local:3000) to local 5000 server side if it's not there
   app.use(express.static('client/build'));
   const path = require('path');
   app.get('*', (req,res) => {

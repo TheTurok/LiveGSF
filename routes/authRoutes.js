@@ -9,11 +9,16 @@ module.exports = (app) => {
   ); //get(request path, what to execute when the user goes on path)
 
   //after callback it goes to here and then passport authenticates google!
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/');
+    });
 
   app.get('/api/logout', (req, res) => {
     req.logout();  //use this function to end cookie
-    res.send(req.user);  //log out user should be empty
+    res.redirect('/');  //log out user should be empty
   });
 
   app.get('/api/current_user', (req, res) => {

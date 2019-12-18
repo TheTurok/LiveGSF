@@ -2,6 +2,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './index.css';
 // Above is styling code
 
+//redux is the memory/saving-state and react is the view, dom is document object model
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Provider} from 'react-redux';  //to create state in a website

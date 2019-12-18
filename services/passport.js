@@ -23,7 +23,7 @@ passport.use(
     callbackURL: '/auth/google/callback', //callback goes to app.get in auth routes
     proxy: true
   },
-  async (accessToken, refreshToken, profile, done) => {
+  async (accessToken, refreshToken, profile, done) => { //profile is json object with all of google information of the user that logs in
     const existingUser = await User.findOne({googleID: profile.googleID});
     if(existingUser){
       //already User in database
@@ -35,7 +35,7 @@ passport.use(
       name: profile.displayName,
       emails: profile.emails
     }).save()
-    
+
     done(null, user);
   })
 );
