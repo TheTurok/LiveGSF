@@ -6,8 +6,8 @@ import * as actions from '../actions';
 // RESPONISIBLE for VIEWS
 
 import Header from './Header';
-
-const Landing = () => <h2> Information Wafer Etc. </h2>;
+import Request from './request/Request';
+import CurrentMeasurement from './current_measurement/CurrentMeasurement';
 
 class App extends Component{
   componentDidMount(){
@@ -20,7 +20,8 @@ class App extends Component{
         <BrowserRouter>
           <div>
             <Header/>
-            <Route exact={true} path = "/" component={Landing} />
+            <Route exact={true} path = "/" component={CurrentMeasurement} />
+            <Route exact={true} path = "/request" component={Request} />
           </div>
         </BrowserRouter>
       </div>
