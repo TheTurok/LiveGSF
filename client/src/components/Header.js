@@ -25,7 +25,7 @@ class Header extends Component {
           <Link to="/" style={{color:'purple', fontWeight: 'bold', margin:'10px', fontSize: '22px'}}> Golden Sunflower </Link>
           <ul className="right">
             <li>
-              <Link to="/request"> Request </Link>
+              <Link to="/tracker"> Tracker </Link>
             </li>
             <li>
               {this.renderContent()}
