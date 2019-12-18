@@ -6,7 +6,7 @@ import * as actions from '../actions';
 // RESPONISIBLE for VIEWS
 
 import Header from './Header';
-import Request from './request/Request';
+import Tracker from './tracker/Tracker';
 import CurrentMeasurement from './current_measurement/CurrentMeasurement';
 
 class App extends Component{
@@ -21,7 +21,7 @@ class App extends Component{
           <div>
             <Header/>
             <Route exact={true} path = "/" component={CurrentMeasurement} />
-            <Route exact={true} path = "/request" component={Request} />
+            <Route exact={true} path = "/tracker" component={Tracker} />
           </div>
         </BrowserRouter>
       </div>
