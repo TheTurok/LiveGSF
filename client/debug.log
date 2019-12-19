@@ -26,3 +26,4 @@
 >>>>>>> 0c00eae6fd4d981d0d3f6aab14735fd685eba99b
 >>>>>>> bd34efc628c75f47026215ca0de3a499b0be7568
 [1218/183918.512:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1219/104333.655:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)

@@ -2,8 +2,24 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
+import _ from 'lodash';
+import {WAFERS} from './formFields';
 
 class CurrentMeasurement extends Component{
+  renderTrayFields(){
+    return _.map(this.props.track.trays, ({wafer, quantity, bin}) => {
+      if (wafer){
+        return(
+          <div style={{margin: '5px'}} key={wafer} className="wafer-information">
+            <div className="white-text">{wafer}</div>
+            <div className="white-text">{quantity}</div>
+            <div className="white-text">{bin}</div>
+          </div>
+        );
+      }
+    });
+  }
+
   renderContent(){
     switch(this.props.track){
       case null:
@@ -14,14 +30,18 @@ class CurrentMeasurement extends Component{
         return(
           <div>
             <div className="row">
-              <div className="card grey darken-1">
+              <div className="card grey">
                 <div className="card-content white-text">
                   <span className="card-title"> {this.props.track.title}</span>
                   <p> {this.props.track.start }</p>
                   <p> {this.props.track.end }</p>
                 </div>
                 <div>
-                  {this.props.track.wafer1 ? <h6>Wafer</h6> : <div></div> }
+                  {this.renderTrayFields()}
+                </div>
+                <div>
+                  <h6 className="white-text" style={{margin:'10px'}}>Notes</h6>
+                  { this.props.track.notes}
                 </div>
                 <div className="card-action">
                   <a href="#">Edit</a>
