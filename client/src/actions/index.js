@@ -13,11 +13,10 @@ export const fetchTracker = () => async dispatch => {
 
 export const fetchCurrentMeasurement = () => async dispatch => {
   const res = await axios.get('/api/tracker/current');
-  dispatch({type: FETCH_TRACKER, payload:res});
+  dispatch({type: FETCH_TRACKER, payload:res.data});
 }
 
 export const startMeasurement = (values, history) => async dispatch => {
-  console.log(values);
   const res = await axios.post('/api/tracker', values);
   history.push('/');
   dispatch({type: START_MEASUREMENT, payload: res})

@@ -15,6 +15,7 @@ import CurrentMeasurement from './current_measurement/CurrentMeasurement';
 class App extends Component{
   componentDidMount(){
     this.props.fetchUser();
+    this.props.fetchCurrentMeasurement();
   }
 
   render(){
