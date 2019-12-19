@@ -8,7 +8,11 @@ const trackerSchema = new Schema({  //data inside of a user
   start: Date,
   end: Date,
   trays: [TraySchema],
-  modules: { type: Array, default: [1,1,1,1] },
+  reading: String,
+  dvh: Boolean,
+  stofmr: Boolean,
+  hf: Boolean,
+  fmr: Boolean,
   link: { type: String, default: ''}
 });
 

@@ -7,6 +7,9 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Tracker from './tracker/Tracker';
+
+//CurrentMeasurement Folder
+import TrackerNew from './current_measurement/TrackerNew';
 import CurrentMeasurement from './current_measurement/CurrentMeasurement';
 
 class App extends Component{
@@ -22,6 +25,7 @@ class App extends Component{
             <Header/>
             <Route exact={true} path = "/" component={CurrentMeasurement} />
             <Route exact={true} path = "/tracker" component={Tracker} />
+            <Route exact={true} path = "/tracker/new" component={TrackerNew} />
           </div>
         </BrowserRouter>
       </div>

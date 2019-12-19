@@ -2,3 +2,35 @@ ul li a{
   color: purple;
   font-weight: bold;
 }
+
+.wafer{
+  width: 100px;
+}
+
+.bin{
+  width:50px;
+}
+
+.quantity{
+  width:50px;
+}
+
+.wafer-information{
+  display: flex;
+}
+
+.wafer-information div{
+  margin: 10px;
+}
+
+#modules{
+  display: flex;
+}
+
+#modules div{
+  margin: 20px;
+}
+
+#modules input{
+  opacity: 1;
+}
