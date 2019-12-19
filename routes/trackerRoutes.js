@@ -71,10 +71,13 @@ module.exports = (app) => {
         bin: bin4
       }];
 
+      let dt = new Date();
+      const start = dt.getDate() + "-" + (dt.getMonth() + 1) + "-" + (dt.getFullYear());
+
       const tracker = new Tracker({
         title,
         notes,
-        start: Date.now(),
+        start,
         end: Date.now(),
         trays: trays.map(
           ({wafer, quantity, bin}) => ({
