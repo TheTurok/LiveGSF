@@ -22,12 +22,17 @@
     "cookie-session": "^1.3.3",
     "express": "^4.17.1",
     "http-proxy-middleware": "^0.20.0",
+    "lodash": "^4.17.15",
     "materialize-css": "^1.0.0",
     "mongoose": "^5.8.1",
     "node-latest-version": "^1.0.16",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
+<<<<<<< HEAD
     "react-redux": "^7.1.3"
+=======
+    "redux-form": "^8.1.0"
+>>>>>>> be5391e43413e03be7887009967e260a6785b9bb
   }
 }

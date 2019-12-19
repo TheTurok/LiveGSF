@@ -7,8 +7,10 @@ const Tracker = mongoose.model('trackers');
 module.exports = (app) => {
   app.get(
     '/api/tracker_history',
-    (req, res) => {
-      res.redirect('/');
+    requireAuthentication,
+    async (req, res) => {
+      const trackers = await Tracker.find() //find all the tracker entries
+      res.send(trackers);
   });
 
   app.get(
