@@ -8,7 +8,7 @@ export const fetchUser = () => async dispatch => {
 
 export const fetchTracker = () => async dispatch => {
   const res = await axios.get('/api/tracker');
-  dispatch({type: FETCH_TRACKER_HISTORY, payload:res});
+  dispatch({type: FETCH_TRACKER_HISTORY, payload:res.data});
 }
 
 export const fetchCurrentMeasurement = () => async dispatch => {

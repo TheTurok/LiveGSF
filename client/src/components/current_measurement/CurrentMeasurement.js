@@ -55,9 +55,6 @@ class CurrentMeasurement extends Component{
     }
   }
 
-  componentDidMount(){
-  }
-
   render(){
     return(
       <div >

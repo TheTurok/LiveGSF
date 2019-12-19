@@ -6,23 +6,16 @@ const Tracker = mongoose.model('trackers');
 
 module.exports = (app) => {
   app.get(
-    '/api/tracker_history',
+    '/api/tracker',
     requireAuthentication,
     async (req, res) => {
       const trackers = await Tracker.find() //find all the tracker entries
       res.send(trackers);
   });
 
-  app.get(
-    '/api/tracker',
-    (req, res) => {
-      res.redirect('/');
-  });
-
   app.get('/api/tracker/current',
     async (req, res) => {
       const current = await Tracker.findOne().sort({start: -1}).limit(1);
-      console.log(current);
       res.send(current);
   });
 
