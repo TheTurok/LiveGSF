@@ -33,8 +33,8 @@ class CurrentMeasurement extends Component{
               <div className="card grey">
                 <div className="card-content white-text">
                   <span className="card-title"> {this.props.track.title}</span>
-                  <p> {this.props.track.start}</p>
-                  <p> {this.props.track.end }</p>
+                  <p> {new Date(this.props.track.start).toLocaleDateString()}</p>
+                  <p> {new Date(this.props.track.end).toLocaleDateString()}</p>
                 </div>
                 <div>
                   {this.renderTrayFields()}

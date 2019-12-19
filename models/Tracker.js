@@ -5,7 +5,7 @@ const TraySchema = require('./Tray');
 //scehme is changable as see fit, and nothing will break, it will edit forfuture users.
 const trackerSchema = new Schema({  //data inside of a user
   title: String,
-  start: String,
+  start: Date,
   end: Date,
   trays: [TraySchema],
   reading: String,
