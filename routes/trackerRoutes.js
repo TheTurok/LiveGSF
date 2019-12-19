@@ -17,6 +17,13 @@ module.exports = (app) => {
       res.redirect('/');
   });
 
+  app.get('/api/tracker/current',
+    async (req, res) => {
+      const current = await Tracker.findOne().sort({start: -1}).limit(1);
+      console.log(current);
+      res.send(current);
+  });
+
   app.post(
     '/api/tracker',
     requireAuthentication,
@@ -26,32 +33,20 @@ module.exports = (app) => {
       let quantity1 = quantity2 = quantity3 = quantity4 = null;
       let bin1 = bin2 = bin3 = bin4 = null;
 
-      if(req.body.wafer1)
-        wafer1 = req.body.wafer1;
-      if(req.body.wafer2)
-        wafer2 = req.body.wafer2;
-      if(req.body.wafer3)
-        wafer3 = req.body.wafer3;
-      if(req.body.wafer4)
-        wafer4 = req.body.wafer4;
+      if(req.body.wafer1){wafer1 = req.body.wafer1;}
+      if(req.body.wafer2){wafer2 = req.body.wafer2;}
+      if(req.body.wafer3){wafer3 = req.body.wafer3;}
+      if(req.body.wafer4){wafer4 = req.body.wafer4;}
 
-      if(req.body.quantity1)
-        quantity1 = req.body.quantity1;
-      if(req.body.quantity2)
-        quantity2 = req.body.quantity2;
-      if(req.body.quantity3)
-        quantity3 = req.body.quantity3;
-      if(req.body.quantity4)
-        quantity4 = req.body.quantity4;
+      if(req.body.quantity1){quantity1 = req.body.quantity1;}
+      if(req.body.quantity2){quantity2 = req.body.quantity2;}
+      if(req.body.quantity3){quantity3 = req.body.quantity3;}
+      if(req.body.quantity4){quantity4 = req.body.quantity4;}
 
-      if(req.body.bin1)
-        bin1 = req.body.bin1;
-      if(req.body.bin2)
-        bin2 = req.body.bin2;
-      if(req.body.bin3)
-        bin3 = req.body.bin3;
-      if(req.body.bin4)
-        bin4 = req.body.bin4;
+      if(req.body.bin1){bin1 = req.body.bin1;}
+      if(req.body.bin2){bin2 = req.body.bin2;}
+      if(req.body.bin3){bin3 = req.body.bin3;}
+      if(req.body.bin4){bin4 = req.body.bin4;}
 
       trays = [{
         wafer: wafer1,
