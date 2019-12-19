@@ -34,6 +34,9 @@ module.exports = (app) => {
       let wafer1 = wafer2 = wafer3 = wafer4 = null;
       let quantity1 = quantity2 = quantity3 = quantity4 = null;
       let bin1 = bin2 = bin3 = bin4 = null;
+      let notes = null;
+
+      if(req.body.notes){notes = req.body.notes;}
 
       if(req.body.wafer1){wafer1 = req.body.wafer1;}
       if(req.body.wafer2){wafer2 = req.body.wafer2;}
@@ -70,6 +73,7 @@ module.exports = (app) => {
 
       const tracker = new Tracker({
         title,
+        notes,
         start: Date.now(),
         end: Date.now(),
         trays: trays.map(
