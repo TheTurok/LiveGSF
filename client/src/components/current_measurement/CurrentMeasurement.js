@@ -33,8 +33,8 @@ class CurrentMeasurement extends Component{
               <div className="card grey">
                 <div className="card-content white-text">
                   <span className="card-title"> {this.props.track.title}</span>
-                  <p> {new Date(this.props.track.start).toLocaleDateString()}</p>
-                  <p> {new Date(this.props.track.end).toLocaleDateString()}</p>
+                  <p style={{display:'flex', margin:'5px'}}>Start: {new Date(this.props.track.start).toLocaleDateString()}</p>
+                  <p style={{display:'flex', margin:'5px'}}>End: {this.props.track.end? new Date(this.props.track.end).toLocaleDateString() : <p style={{marginLeft:'5px'}}> OnGoing</p> }</p>
                 </div>
                 <div>
                   {this.renderTrayFields()}
@@ -46,7 +46,12 @@ class CurrentMeasurement extends Component{
                 <div className="card-action">
                   <a href="#">Edit</a>
                   <a href="#">Delete</a>
-                  <a href="#">Complete</a>
+                  <button
+                    onClick={() => this.props.completeMeasurement({_id: this.props.track._id}, this.props.history)}
+                    className="blue right white-text darken-3 btn-flat"
+                    >
+                    Complete
+                  </button>
                 </div>
               </div>
             </div>
@@ -70,6 +75,7 @@ class CurrentMeasurement extends Component{
 };
 
 function mapStateToProps({ track }) {
+  console.log(track);
   return { track };
 }
 

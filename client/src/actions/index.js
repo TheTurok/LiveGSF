@@ -1,5 +1,10 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_TRACKER, FETCH_TRACKER_HISTORY, START_MEASUREMENT} from './types';
+import {
+  FETCH_USER,
+  FETCH_TRACKER,
+  FETCH_TRACKER_HISTORY,
+  START_MEASUREMENT,
+  COMPLETE_MEASUREMENT} from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -20,4 +25,10 @@ export const startMeasurement = (values, history) => async dispatch => {
   const res = await axios.post('/api/tracker', values);
   history.push('/');
   dispatch({type: START_MEASUREMENT, payload: res})
+}
+
+export const completeMeasurement = (id, history) => async dispatch => {
+  const res = await axios.put('./api/tracker/complete', id);
+  dispatch({type: COMPLETE_MEASUREMENT, payload: res});
+  history.push('/');
 }

@@ -5,7 +5,7 @@ const requireAuthentication = require('../middlewares/requireAuthentication');
 const Tracker = mongoose.model('trackers');
 
 module.exports = (app) => {
-  app.get(
+  app.get( //Get List Of Tacker History
     '/api/tracker',
     requireAuthentication,
     async (req, res) => {
@@ -13,13 +13,19 @@ module.exports = (app) => {
       res.send(trackers);
   });
 
-  app.get('/api/tracker/current',
+  app.get('/api/tracker/current', //Get The most rect one, currenlty Running
     async (req, res) => {
       const current = await Tracker.findOne().sort({start: -1}).limit(1);
       res.send(current);
   });
 
-  app.post(
+  app.put('/api/tracker/complete',
+    async (req, res) => {  //Stamp End Date On the tracker
+      const current = await Tracker.findOneAndUpdate( {_id : req.body }, {end: Date.now()})
+      res.send(current);
+  });
+
+  app.post(  //Get Current Tracker
     '/api/tracker',
     requireAuthentication,
     async (req, res) => {
@@ -68,7 +74,6 @@ module.exports = (app) => {
         title,
         notes,
         start: Date.now(),
-        end: Date.now(),
         trays: trays.map(
           ({wafer, quantity, bin}) => ({
               wafer,
