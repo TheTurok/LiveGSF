@@ -7,8 +7,10 @@ const Tracker = mongoose.model('trackers');
 module.exports = (app) => {
   app.get(
     '/api/tracker_history',
-    (req, res) => {
-      res.redirect('/');
+    requireAuthentication,
+    async (req, res) => {
+      const trackers = await Tracker.find() //find all the tracker entries
+      res.send(trackers);
   });
 
   app.get(
@@ -68,18 +70,13 @@ module.exports = (app) => {
 
       const tracker = new Tracker({
         title,
-        reading,
         start: Date.now(),
-        end: null,
-        dvh,
-        stofmr,
-        hf,
-        fmr,
+        end: Date.now(),
         trays: trays.map(
-        ({wafer, quantity, bin}) => ({
-          wafer,
-          quantity,
-          bin }))
+          ({wafer, quantity, bin}) => ({
+              wafer,
+              quantity,
+              bin }))
       });
 
       try{
@@ -89,7 +86,6 @@ module.exports = (app) => {
       catch(err){
         res.status(422).send(err);
       }
+
   });
-
-
 };
