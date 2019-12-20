@@ -7,12 +7,13 @@ ul li a{
   width: 100px;
 }
 
-.bin{
+.bin, .quantity{
   width:50px;
+  margin: 5px;
 }
 
-.quantity{
-  width:50px;
+.notes{
+  margin: 22px;
 }
 
 .wafer-information{
@@ -21,6 +22,7 @@ ul li a{
 
 .wafer-information div{
   margin: 10px;
+  margin-left: 30px;
 }
 
 #modules{

@@ -19,6 +19,13 @@ module.exports = (app) => {
       res.send(current);
   });
 
+  app.delete('/api/tracker/current',
+    async (req, res) => {  //Stamp End Date On the tracker
+      const current = await Tracker.deleteOne( { _id : req.body});
+      res.send(current);
+  });
+
+
   app.put('/api/tracker/complete',
     async (req, res) => {  //Stamp End Date On the tracker
       const current = await Tracker.findOneAndUpdate( {_id : req.body }, {end: Date.now()})

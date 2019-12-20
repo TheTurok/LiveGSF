@@ -52,7 +52,7 @@ class TrackerForm extends Component{
 
           <div id="modules"> {this.renderModules()} </div>
 
-          <div>
+          <div className="notes">
             <label>Notes</label>
             <div>
               <Field name="notes" component="textarea" />
