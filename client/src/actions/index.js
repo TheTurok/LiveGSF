@@ -5,7 +5,8 @@ import {
   FETCH_TRACKER_HISTORY,
   START_MEASUREMENT,
   COMPLETE_MEASUREMENT,
-  DELETE_MEASUREMENT} from './types';
+  DELETE_MEASUREMENT,
+  SAVE_LINK} from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -37,5 +38,13 @@ export const completeMeasurement = (id, history) => async dispatch => {
 export const deleteMeasurement = (id, history) => async dispatch => {
   const res = await axios.delete('/api/tracker/current', { data: id });
   dispatch({type: DELETE_MEASUREMENT, payload: res});
+  history.push('/');
+}
+
+export const saveLink = (id, link, history) => async dispatch => {
+  console.log(id);
+  console.log(link);
+  const res = await axios.put('/api/tracker/link', id);
+  dispatch({type: SAVE_LINK, payload: res});
   history.push('/');
 }
