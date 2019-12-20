@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions';
 import _ from 'lodash';
 import {WAFERS} from './formFields';
+import moment from 'moment';
+import'moment-countdown';
+import Countdown from 'react-countdown-now';
 
 class CurrentMeasurement extends Component{
   renderTrayFields(){
@@ -33,8 +36,25 @@ class CurrentMeasurement extends Component{
               <div className="card grey">
                 <div className="card-content white-text">
                   <span className="card-title"> {this.props.track.title}</span>
-                  <p style={{display:'flex', margin:'5px'}}>Start: {new Date(this.props.track.start).toLocaleDateString()}</p>
-                  <p style={{display:'flex', margin:'5px'}}>End: {this.props.track.end? new Date(this.props.track.end).toLocaleDateString() : <p style={{marginLeft:'5px'}}> OnGoing</p> }</p>
+                  <div style={{display: 'flex'}}>
+                    <p style={{ margin:'5px'}}>
+                      Start: {moment(this.props.track.start).format('D-MMM-YY')}
+                    </p>
+                    <p className="pull-right" style={{margin:'5px'}}>
+                      End: {this.props.track.end? moment(this.props.track.end).format('D-MMM-YY') : <span style={{marginLeft:'5px'}}> OnGoing</span> }
+                    </p>
+                  </div>
+                  <div>
+                    <p style={{ margin:'5px'}}>ETA: {moment(this.props.track.end).format('D-MMM-YY / h:mm a')}</p>
+                    <p style={{ display: 'flex'}}>
+                      <div style={{ margin:'5px' }}>
+                        Timer:
+                      </div>
+                      <div style={{ margin:'5px'}}>
+                        <Countdown  date={this.props.track.eta} />
+                      </div>
+                    </p>
+                  </div>
                 </div>
                 <div>
                   <div style={{margin: '5px'}} className="wafer-information">

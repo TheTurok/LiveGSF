@@ -25,6 +25,16 @@ ul li a{
   margin-left: 30px;
 }
 
+.eta{
+  display: flex;
+}
+
+.eta div{
+  margin: 10px;
+  margin-left: 30px;
+  width: 50px;
+}
+
 #modules{
   display: flex;
 }

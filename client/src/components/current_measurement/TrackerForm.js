@@ -50,6 +50,12 @@ class TrackerForm extends Component{
 
           {this.renderTrayFields()}
 
+          <div className="eta">
+            <label>ETA</label>
+            <Field component={TrackerField} type="text" name="hours" label="Hours" />
+            <Field component={TrackerField} type="text" name="minutes" label="Minutes" />
+          </div>
+
           <div id="modules"> {this.renderModules()} </div>
 
           <div className="notes">
@@ -89,8 +95,15 @@ function validate(values){
     if(values[b] && values[b].length !== 2){
       errors[b] = "bin can only be two characters";
     }
-
   });
+
+  if(isNaN(values.hours)){
+    errors.hours = "hour must be a number!";
+  }
+  if(isNaN(values.minutes)){
+    errors.minutes = "minutes must be a number!";
+  }
+
   return errors;
 }
 
@@ -102,6 +115,8 @@ export default reduxForm({
     dvh: true,
     stofmr: true,
     hf: true,
-    fmr: true
+    fmr: true,
+    hours: 0,
+    minutes: 0
   }
 })(TrackerForm);

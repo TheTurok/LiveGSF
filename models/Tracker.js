@@ -14,6 +14,7 @@ const trackerSchema = new Schema({  //data inside of a user
   hf: Boolean,
   fmr: Boolean,
   notes: String,
+  eta: Date,
   link: { type: String, default: ''}
 });
 
