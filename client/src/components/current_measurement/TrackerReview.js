@@ -58,6 +58,14 @@ class TrackerReview extends Component{
             {this.renderTrayFields()}
           </div>
 
+          <div className="eta">
+            <label>ETA</label>
+            <label> Hours </label>
+            <div > {this.props.formValues.hours} </div>
+            <label> Minutes </label>
+            <div > {this.props.formValues.minutes} </div>
+          </div>
+
           </div>
             <label> Modules </label>
             <div style={{display:'flex'}}> {this.renderModules()} </div>

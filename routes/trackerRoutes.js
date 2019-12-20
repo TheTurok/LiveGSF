@@ -1,11 +1,12 @@
 //const _ = require('lodash');
 const mongoose = require('mongoose');
 const requireAuthentication = require('../middlewares/requireAuthentication');
+const moment = require('moment');
 
 const Tracker = mongoose.model('trackers');
 
 module.exports = (app) => {
-  app.get(
+  app.get( //Get List Of Tacker History
     '/api/tracker',
     requireAuthentication,
     async (req, res) => {
@@ -13,17 +14,30 @@ module.exports = (app) => {
       res.send(trackers);
   });
 
-  app.get('/api/tracker/current',
+  app.get('/api/tracker/current', //Get The most rect one, currenlty Running
     async (req, res) => {
       const current = await Tracker.findOne().sort({start: -1}).limit(1);
       res.send(current);
   });
 
-  app.post(
+  app.delete('/api/tracker/current',
+    async (req, res) => {  //Stamp End Date On the tracker
+      const current = await Tracker.deleteOne( { _id : req.body});
+      res.send(current);
+  });
+
+
+  app.put('/api/tracker/complete',
+    async (req, res) => {  //Stamp End Date On the tracker
+      const current = await Tracker.findOneAndUpdate( {_id : req.body }, {end: Date.now()})
+      res.send(current);
+  });
+
+  app.post(  //Get Current Tracker
     '/api/tracker',
     requireAuthentication,
     async (req, res) => {
-      const {title, reading, dvh, hf, stofmr, fmr} = req.body;
+      const {title, reading, dvh, hf, stofmr, fmr, hours, minutes} = req.body;
       let wafer1 = wafer2 = wafer3 = wafer4 = null;
       let quantity1 = quantity2 = quantity3 = quantity4 = null;
       let bin1 = bin2 = bin3 = bin4 = null;
@@ -64,11 +78,15 @@ module.exports = (app) => {
         bin: bin4
       }];
 
+      let start = Date.now();
+      let eta = moment(start).add(hours, 'h').toDate();
+      eta = moment(eta).add(minutes, 'm').toDate();
+
       const tracker = new Tracker({
         title,
         notes,
-        start: Date.now(),
-        end: Date.now(),
+        start,
+        eta,
         trays: trays.map(
           ({wafer, quantity, bin}) => ({
               wafer,
