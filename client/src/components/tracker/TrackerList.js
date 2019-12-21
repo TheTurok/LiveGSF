@@ -5,6 +5,7 @@ import _ from 'lodash';
 import {WAFERS} from '../current_measurement/formFields';
 import { renderTrayFields } from '../current_measurement/CurrentMeasurement';
 import {reduxForm, Field} from 'redux-form';
+import {Link} from 'react-router-dom';
 
 class TrackerList extends Component {
   componentDidMount() { //call action creator fetchTracker upon mount
@@ -24,8 +25,8 @@ class TrackerList extends Component {
           return(
             <div style={{margin: '5px'}} key={wafer} className="wafer-information">
               <div >{wafer}</div>
-              <div >{quantity}</div>
               <div >{bin}</div>
+              <div >{quantity}</div>
             </div>
           );
         }
@@ -55,7 +56,7 @@ class TrackerList extends Component {
               </div>
               {this.renderTrayFields(aSingleTrack.trays)}
 
-              <div class="card-stacked" >
+              <div className="card-stacked" >
                 <div>
                   Notes
                 </div>
@@ -64,15 +65,14 @@ class TrackerList extends Component {
                 </div>
 
                 <div>
-                    <p onchange={this.onChange}>
-                      Link:<input id={aSingleTrack._id} type="text" name="linked" value={aSingleTrack.link} />
+                    <p >
+                      Link: {aSingleTrack.link}
                     </p>
-                    <button
-                      type="submit"
-                      onClick={() => this.props.saveLink({_id: aSingleTrack._id}, {link: document.getElementById(aSingleTrack._id).value}, this.props.history)}
-                      className="blue white-text darken-3 btn-flat">
-                      Save
+                    <Link to={{pathname:'/tracker/edit', state: {trackid:aSingleTrack._id, link:aSingleTrack.link} }}>
+                    <button className="blue white-text darken-3 btn-flat">
+                      Edit
                     </button>
+                    </Link>
                   <button className="red right white-text darken-3 btn-flat">
                     Delete
                   </button>

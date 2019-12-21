@@ -33,6 +33,14 @@ module.exports = (app) => {
       res.send(current);
   });
 
+  app.put('/api/tracker/link',
+    async (req, res) => {  //Stamp End Date On the tracker
+      console.log('YOLO');
+      console.log(req.body);
+      const current = await Tracker.findOneAndUpdate( {_id : req.body.id }, {link: req.body.link})
+      res.send(current);
+  });
+
   app.post(  //Get Current Tracker
     '/api/tracker',
     requireAuthentication,

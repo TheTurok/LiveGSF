@@ -46,14 +46,14 @@ class CurrentMeasurement extends Component{
                   </div>
                   <div>
                     <p style={{ margin:'5px'}}>ETA: {moment(this.props.track.end).format('D-MMM-YY / h:mm a')}</p>
-                    <p style={{ display: 'flex'}}>
+                    <div style={{ display: 'flex'}}>
                       <div style={{ margin:'5px' }}>
                         Timer:
                       </div>
                       <div style={{ margin:'5px'}}>
                         <Countdown  date={this.props.track.eta} />
                       </div>
-                    </p>
+                    </div>
                   </div>
                 </div>
                 <div>

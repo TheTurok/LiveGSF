@@ -42,9 +42,8 @@ export const deleteMeasurement = (id, history) => async dispatch => {
 }
 
 export const saveLink = (id, link, history) => async dispatch => {
-  console.log(id);
-  console.log(link);
-  const res = await axios.put('/api/tracker/link', id);
+  const data = {id,link};
+  const res = await axios.put('/api/tracker/link', data);
   dispatch({type: SAVE_LINK, payload: res});
-  history.push('/');
+  history.push('/tracker');
 }
