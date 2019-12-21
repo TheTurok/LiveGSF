@@ -66,7 +66,7 @@ class TrackerList extends Component {
 
                 <div>
                     <p >
-                      Link: {aSingleTrack.link}
+                      Link: <a href={aSingleTrack.link}> {aSingleTrack.link} </a>
                     </p>
                     <Link to={{pathname:'/tracker/edit', state: {trackid:aSingleTrack._id, link:aSingleTrack.link} }}>
                     <button className="blue white-text darken-3 btn-flat">
@@ -75,9 +75,6 @@ class TrackerList extends Component {
                     </Link>
                   <button className="red right white-text darken-3 btn-flat">
                     Delete
-                  </button>
-                  <button className="green white-text darken-3 btn-flat">
-                    Copy
                   </button>
                 </div>
               </div>
