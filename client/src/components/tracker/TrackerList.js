@@ -36,7 +36,7 @@ class TrackerList extends Component {
 
   renderTrackerList() {
     if(this.props.history){
-      return _.map(this.props.history, (aSingleTrack) => {
+      return _.map(this.props.history.reverse(), (aSingleTrack) => {
         return (
           <div className="card darken-1" key={aSingleTrack._id}>
             <div className="card-content">
