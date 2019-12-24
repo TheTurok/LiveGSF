@@ -43,7 +43,6 @@ module.exports = (app) => {
 
   app.post(  //Get Current Tracker
     '/api/tracker',
-    requireAuthentication,
     async (req, res) => {
       const {title, reading, dvh, hf, stofmr, fmr, hours, minutes} = req.body;
       let wafer1 = wafer2 = wafer3 = wafer4 = null;
